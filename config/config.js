@@ -5,7 +5,7 @@ module.exports = {
     username: process.env.MYSQL_USER,
     password: process.env.MYSQL_PASSWORD,
     database: 'group-gbc',
-    host: process.env.HOSTNAME,
+    host: process.env.HOSTNAME || process.env.HEROKU,
     dialect: 'mysql',
   },
   test: {
