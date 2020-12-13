@@ -4,7 +4,7 @@ const { Doctors } = require('../models');
 const validationUser = require('../services/validationUser');
 const registerRoute = express.Router();
 
-// ROTA PARA CADASTRAR UM MEDICO
+// ROTA PARA CADASTRAR UM MEDICO ( INSERT )
 registerRoute.post('/', async (req, res) => {
   try {
     const newUser = await validationUser({ ...req.body });
@@ -17,7 +17,7 @@ registerRoute.post('/', async (req, res) => {
   }
 });
 
-// ROTA PARA BUSCAR UM MEDICO POR CATEGORIA
+// ROTA PARA BUSCAR UM MEDICO POR CATEGORIA ( SELECT )
 registerRoute.get('/buscar', async (req, res) => {
   try {
     const { search, type } = req.body;
@@ -34,7 +34,7 @@ registerRoute.get('/buscar', async (req, res) => {
   }
 });
 
-// ROTA PARA EDITAR UM MEDICO
+// ROTA PARA EDITAR UM MEDICO ( UPDATE )
 registerRoute.put('/editar/:id', async (req, res) => {
   try {
     const { id } = req.params;
@@ -49,7 +49,7 @@ registerRoute.put('/editar/:id', async (req, res) => {
   }
 });
 
-// ROTA PARA TRAZER TODOS OS MEDICOS CADASTRADOS NO SISTEMA
+// ROTA PARA TRAZER TODOS OS MEDICOS CADASTRADOS NO SISTEMA ( SELECT )
 registerRoute.get('/', async (req, res) => {
   try {
     const userStatus = await Doctors.findAll();
@@ -59,7 +59,7 @@ registerRoute.get('/', async (req, res) => {
   }
 });
 
-// ROTA PARA DELETAR UM MEDICO DO SISTEMA
+// ROTA PARA DELETAR UM MEDICO DO SISTEMA ( DELETE )
 registerRoute.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;
