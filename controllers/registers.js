@@ -3,15 +3,17 @@ const { Op } = require('sequelize');
 const { Doctors } = require('../models');
 const validationUser = require('../services/validationUser');
 const findCep = require('../services/API_Correios');
+const concaAndress = require('../services/concaAndress');
 const registerRoute = express.Router();
 
 // ROTA PARA CADASTRAR UM MEDICO ( INSERT )
 registerRoute.post('/', async (req, res) => {
   try {
     const newUser = await validationUser({ ...req.body });
+    console.log(newUser);
     const andress = await findCep(newUser.cep);
-    console.log(andress);
-    const userStatus = await Doctors.create({ ...req.body, andress: JSON.stringify(andress) });
+    const newAndress = await concaAndress(andress, req.body.numero);
+    const userStatus = await Doctors.create({ ...req.body, andress: newAndress });
     res.status(201).json(userStatus.dataValues);
   } catch (error) {
     error.sql
@@ -48,7 +50,7 @@ registerRoute.put('/editar/:id', async (req, res) => {
   } catch (error) {
     error.sql
       ? res.status(400).json({ message: 'CRM já cadastrado' })
-      : res.status(400).json({ message: error.message });
+      : res.status(404).json({ message: 'Usuário não encontrado' });
   }
 });
 
