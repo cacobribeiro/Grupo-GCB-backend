@@ -10,7 +10,7 @@ const registerRoute = express.Router();
 registerRoute.post('/', async (req, res) => {
   try {
     const newUser = await validationUser({ ...req.body });
-    console.log(newUser);
+    if (newUser.message_error) return res.status(400).json({ message: newUser.message_error });
     const andress = await findCep(newUser.cep);
     const newAndress = await concaAndress(andress, req.body.numero);
     const userStatus = await Doctors.create({ ...req.body, andress: newAndress });

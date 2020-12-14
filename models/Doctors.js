@@ -11,25 +11,25 @@ const Doctors = (sequelize, DataTypes) =>
       CRM: {
         type: DataTypes.STRING,
         validate: {
-          len: [7, 7],
+          len: [9, 9],
         },
       },
       fixFone: {
         type: DataTypes.STRING,
         validate: {
-          len: [10, 10],
+          len: [14, 14],
         },
       },
       fone: {
         type: DataTypes.STRING,
         validate: {
-          len: [11, 11],
+          len: [15, 15],
         },
       },
       cep: {
         type: DataTypes.STRING,
         validate: {
-          len: [8, 8],
+          len: [9, 9],
         },
       },
       andress: {

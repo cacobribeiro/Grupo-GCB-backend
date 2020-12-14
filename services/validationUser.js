@@ -2,10 +2,25 @@ const yup = require('yup');
 
 const schema = yup.object().shape({
   name: yup.string().required().max(120),
-  CRM: yup.string().required().max(7),
-  fixFone: yup.string().required().max(10),
-  fone: yup.string().required().max(11),
-  cep: yup.string().required().max(8),
+  CRM: yup
+    .string()
+    .matches(/^\d{2}.\d{3}.\d{2}/)
+    .required(),
+  fixFone: yup
+    .string()
+    .matches(/^\([0-9]{2}\) [0-9]{4}-[0-9]{4}$/)
+    .required()
+    .max(14),
+  fone: yup
+    .string()
+    .matches(/^\([0-9]{2}\) [0-9]{5}-[0-9]{4}$/)
+    .required()
+    .max(15),
+  cep: yup
+    .string()
+    .matches(/^\d{5}-\d{3}$/)
+    .required()
+    .max(9),
   especialidade: yup.string().required(),
 });
 
