@@ -8,17 +8,19 @@ enviado via body-parser os seguintes dados:
 
 {
 "name": "Caio Ribeiro",
-"CRM": "2266666",
-"fixFone": 1155623285,
-"fone": 11976512702,
-"cep": "04651160",
+"CRM": "22.666.66",
+"fixFone": (11)5562-3285,
+"fone": (11)97651-2702,
+"cep": "04651-160",
 "numero": 71,
 "especialidade": "CARDIOLOGIA INFANTIL",
 "especialidade2": "CARDIOLOGIA CLÍNICA"
 }
 
 OBS: especialidades só são aceitas dentro das expecificadas.
-Algumas validações ainda faltam serem implementadas.
+Campos de CRM, fixFone, fone e CEP receberam REGEX de validação.
+
+Todos os campos obrigatorios estão sendo validados pelo YUP e pelo Sequelize para não ter entrada errada dentro do banco de dados!
 
 ---
 
