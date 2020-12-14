@@ -1,23 +1,24 @@
-- ROTAS INSERT:
+- ROTA INSERT:
 
 Metodo: POST
 URL: http://localhost:3001/
 
-Cadastra um medico no sistema.
+Cadastrar um medico no sistema.
 enviado via body-parser os seguintes dados:
 
 {
 "name": "Caio Ribeiro",
-"CRM": 4227433,
+"CRM": "2266666",
 "fixFone": 1155623285,
 "fone": 11976512702,
-"cep": 14651160,
-"andress": "Rua Osmar Fregona",
-"especialidade": "CARDIOLOGIA INFANT2IL",
+"cep": "04651160",
+"numero": 71,
+"especialidade": "CARDIOLOGIA INFANTIL",
 "especialidade2": "CARDIOLOGIA CLÍNICA"
 }
 
 OBS: especialidades só são aceitas dentro das expecificadas.
+Algumas validações ainda faltam serem implementadas.
 
 ---
 
@@ -30,9 +31,22 @@ não precisa ser enviado nada para o servidor.
 ---
 
 Metodo: PUT
-URL: http://localhost:3001/editar/xx
+URL: http://localhost:3001/editar/XX
 
-sendo xx o ID passado via link para editar o usuario com id xx no banco.
+sendo XX o ID passado via link para editar o usuario com id XX no banco.
+
+Precisa ser enviado os novos dados do medico:
+
+{
+"name": "Marcos Aurelio",
+"CRM": 5051122,
+"fixFone": 1155623285,
+"fone": 11976512702,
+"cep": 14651160,
+"andress": "Rua Osmar Fregona",
+"especialidade": "CARDIOLOGIA INFANTIL",
+"especialidade2": "CARDIOLOGIA INFANTIL"
+}
 
 ---
 
@@ -45,6 +59,9 @@ Rota implementada para buscar um texto de acordo com a categoria de busca deseja
 "type": "name",
 "search": "Cam"
 }
+
+sendo TYPE o campo que deseja buscar, exemplo: name, CRM, fixFone, fone, cep, andress, especialidade, especialidade2.
+e SEARCH é a palavra ou frase chave a ser procurada.
 
 ---
 
