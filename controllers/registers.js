@@ -2,13 +2,16 @@ const express = require('express');
 const { Op } = require('sequelize');
 const { Doctors } = require('../models');
 const validationUser = require('../services/validationUser');
+const findCep = require('../services/API_Correios');
 const registerRoute = express.Router();
 
 // ROTA PARA CADASTRAR UM MEDICO ( INSERT )
 registerRoute.post('/', async (req, res) => {
   try {
     const newUser = await validationUser({ ...req.body });
-    const userStatus = await Doctors.create({ ...req.body });
+    const andress = await findCep(newUser.cep);
+    console.log(andress);
+    const userStatus = await Doctors.create({ ...req.body, andress: JSON.stringify(andress) });
     res.status(201).json(userStatus.dataValues);
   } catch (error) {
     error.sql

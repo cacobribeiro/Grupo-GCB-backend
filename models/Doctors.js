@@ -37,6 +37,43 @@ const Doctors = (sequelize, DataTypes) =>
       },
       especialidade: {
         type: DataTypes.STRING,
+        validate: {
+          isIn: {
+            args: [
+              [
+                'ALERGOLOGIA',
+                'ANGIOLOGIA',
+                'BUCO MAXILO',
+                'CARDIOLOGIA CLÍNICA',
+                'CARDIOLOGIA INFANTIL',
+                'CIRURGIA CABEÇA E PESCOÇO',
+                'CIRURGIA CARDÍACA',
+                'CIRURGIA DE TÓRAX',
+              ],
+            ],
+            msg: 'Especialidade errada.',
+          },
+        },
+      },
+      especialidade2: {
+        type: DataTypes.STRING,
+        validate: {
+          isIn: {
+            args: [
+              [
+                'ALERGOLOGIA',
+                'ANGIOLOGIA',
+                'BUCO MAXILO',
+                'CARDIOLOGIA CLÍNICA',
+                'CARDIOLOGIA INFANTIL',
+                'CIRURGIA CABEÇA E PESCOÇO',
+                'CIRURGIA CARDÍACA',
+                'CIRURGIA DE TÓRAX',
+              ],
+            ],
+            msg: 'Especialidade errada.',
+          },
+        },
       },
     },
     {

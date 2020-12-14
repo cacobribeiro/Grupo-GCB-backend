@@ -35,6 +35,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: true,
       },
+      especialidade2: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
     });
   },
 
