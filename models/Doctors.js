@@ -17,13 +17,13 @@ const Doctors = (sequelize, DataTypes) =>
       fixFone: {
         type: DataTypes.STRING,
         validate: {
-          len: [14, 14],
+          len: [13, 13],
         },
       },
       fone: {
         type: DataTypes.STRING,
         validate: {
-          len: [15, 15],
+          len: [14, 14],
         },
       },
       cep: {
@@ -51,7 +51,7 @@ const Doctors = (sequelize, DataTypes) =>
                 'CIRURGIA DE TÓRAX',
               ],
             ],
-            msg: 'Especialidade errada.',
+            msg: 'Especialidade desconhecida.',
           },
         },
       },
@@ -71,7 +71,7 @@ const Doctors = (sequelize, DataTypes) =>
                 'CIRURGIA DE TÓRAX',
               ],
             ],
-            msg: 'Especialidade errada.',
+            msg: 'Especialidade desconhecida.',
           },
         },
       },
